@@ -5,5 +5,8 @@ input [31:0] ina, inb,
 output reg [31:0] out
     );
 
-	assign out = ina + inb;
+    always @(*)
+    begin
+        out <= ina + inb;
+    end
 endmodule
