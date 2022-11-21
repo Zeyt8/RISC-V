@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module ID(
 input clk,
 input [31:0] PC_ID, INSTRUCTION_ID,
