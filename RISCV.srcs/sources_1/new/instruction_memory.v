@@ -9,7 +9,7 @@ output reg[31:0] out
     
     initial $readmemh("code.mem", codeMemory);
     
-    always @(*)
+    always @(address)
     begin
         out <= codeMemory[address];
     end

@@ -16,7 +16,14 @@ output [4:0] RS1_ID,
 output [4:0] RS2_ID
 );
 
+    assign OPCODE_ID = INSTRUCTION_ID[6:0];
+    assign RD_ID = INSTRUCTION_ID[11:7];
+    assign FUNCT3_ID = INSTRUCTION_ID[14:12];
+    assign RS1_ID = INSTRUCTION_ID[19:15];
+    assign RS2_ID = INSTRUCTION_ID[24:20];
+    assign FUNCT7_ID = INSTRUCTION_ID[31:25];
+
     registers Register(clk, RegWrite_WB, RS1_ID, RS2_ID, RD_WB, ALU_DATA_WB, REG_DATA1_ID, REG_DATA2_ID);
-    imm_gen Imm_Gen( ,IMM_ID);
+    imm_gen Imm_Gen(INSTRUCTION_ID, IMM_ID);
 
 endmodule

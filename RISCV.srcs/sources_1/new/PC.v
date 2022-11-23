@@ -8,12 +8,10 @@ output reg [31:0] out
 
 	always @(posedge clk)
 	begin
-		if (write)
-			out <= in;
+	   if (res)
+	       out <= 0;
+	   else if (write)
+	       out <= in;
 	end
 
-	always @(posedge res)
-	begin
-		out <= 0;
-	end
 endmodule

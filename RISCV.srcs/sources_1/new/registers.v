@@ -7,13 +7,13 @@ input [31:0] write_data,
 output [31:0] read_data1, read_data2
     );
     
-    reg [31:0] registers[31:0];
+    reg [31:0] registers[0:31];
     integer i;
 
     initial
     begin
         for(i = 0; i < 32; i=i+1) begin
-            registers[i] = 0;
+            registers[i] = i;
         end
     end
     
