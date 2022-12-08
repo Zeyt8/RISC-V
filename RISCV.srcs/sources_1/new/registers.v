@@ -20,14 +20,23 @@ output [31:0] read_data1, read_data2
     // write
     always @(posedge clk)
     begin
-        if(reg_write)
+        if(reg_write && write_reg != 0)
         begin
             registers[write_reg] <= write_data;
         end
     end
     
     // read
-    assign read_data1 = registers[read_reg1];
-    assign read_data2 = registers[read_reg2];
+    assign read_data1 = (read_reg1 != 5'b0) ? //it is different from x0
+                        (((reg_write == 1'b1) && (read_reg1 == write_reg)) ? 
+                            write_data :
+                            registers[read_reg1]) :
+                        32'b0;
+                      
+    assign read_data2 = (read_reg2 != 5'b0) ? //it is different from x0
+                        (((reg_write == 1'b1) && (read_reg2 == write_reg)) ? 
+                            write_data :
+                            registers[read_reg2]) :
+                        32'b0;
     
 endmodule

@@ -11,14 +11,12 @@ module RISC_V_TB;
   wire [31:0] INSTRUCTION_ID;
   wire [31:0] IMM_ID;
   wire [31:0] REG_DATA1_ID,REG_DATA2_ID;
-  wire [2:0] FUNCT3_ID;
-  wire [6:0] FUNCT7_ID;
-  wire [6:0] OPCODE_ID;
-  wire [4:0] RD_ID;
-  wire [4:0] RS1_ID;
-  wire [4:0] RS2_ID;
+  wire RegWrite_ID,MemtoReg_ID,MemRead_ID,MemWrite_ID;
+  wire [1:0] ALUop_ID;
+  wire ALUSrc_ID;
+  wire Branch_ID;
   
-  RISC_V_IF_ID procesor(clk,reset,
+  RISC_V procesor(clk,reset,
          IF_ID_write,
          PCSrc,PC_write,
          PC_Branch,
@@ -29,12 +27,10 @@ module RISC_V_TB;
          INSTRUCTION_ID,
          IMM_ID,
          REG_DATA1_ID,REG_DATA2_ID,
-         FUNCT3_ID,
-         FUNCT7_ID,
-         OPCODE_ID,
-         RD_ID,    
-         RS1_ID,   
-         RS2_ID);    
+         RegWrite_ID,MemtoReg_ID,MemRead_ID,MemWrite_ID,
+         ALUop_ID,
+         ALUSrc_ID,
+         Branch_ID);    
          
   always #5 clk=~clk;
   
@@ -52,7 +48,7 @@ module RISC_V_TB;
        
     #10 reset=1'b0;
     #200 $finish;
-  end
+   end
   
     begin: test_pc
         reg res, write;
