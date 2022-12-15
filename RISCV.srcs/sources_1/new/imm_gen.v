@@ -8,8 +8,7 @@ output reg [31:0] out
     reg [6:0] opcode;
     reg [2:0] func;
 
-    always @(in)
-    begin
+    always @(in) begin
         opcode = in[6:0];
         func = in[14:12];
         case(opcode)

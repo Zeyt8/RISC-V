@@ -6,15 +6,12 @@ input [31:0] pc_in, Instruction_IF, IF_ID_Write,
 output reg [31:0] PC_out, Instruction_ID
 );
 
-    always @(posedge clk)
-    begin
-       if (res)
-       begin
+    always @(posedge clk) begin
+       if (res) begin
            PC_out <= 0;
            Instruction_ID <= 0;
        end
-       else
-       begin
+       else begin
 	       PC_out <= pc_in;
 	       Instruction_ID <= Instruction_IF;
 	   end

@@ -10,18 +10,15 @@ output [31:0] read_data1, read_data2
     reg [31:0] registers[0:31];
     integer i;
 
-    initial
-    begin
+    initial begin
         for(i = 0; i < 32; i=i+1) begin
             registers[i] = i;
         end
     end
     
     // write
-    always @(posedge clk)
-    begin
-        if(reg_write && write_reg != 0)
-        begin
+    always @(posedge clk) begin
+        if(reg_write && write_reg != 0) begin
             registers[write_reg] <= write_data;
         end
     end

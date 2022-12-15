@@ -10,11 +10,16 @@ output reg IF_IDwrite,
 output reg control_sel
     );
     
-    always @(*)
-    begin
-        if (MemRead && (rd == rs1 || rd == rs2))
-        begin
-            //stall
+    always @(*) begin
+        if (MemRead && (rd == rs1 || rd == rs2)) begin
+            PCwrite = 1'b0;
+            IF_IDwrite = 1'b0;
+            control_sel = 1'b0;
+        end
+        else begin
+            PCwrite = 1'b1;
+            IF_IDwrite = 1'b1;
+            control_sel = 1'b1;
         end
     end
     
