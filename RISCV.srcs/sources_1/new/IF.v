@@ -1,11 +1,9 @@
-`timescale 1ns / 1ps
-
 module IF(
-input clk, reset,
-input PCSrc, PC_write,
-input [31:0] PC_Branch,
-output [31:0] PC_IF, INSTRUCTION_IF
-    );
+	input clk, reset,
+	input PCSrc, PC_write,
+	input [31:0] PC_Branch,
+	output [31:0] PC_IF, INSTRUCTION_IF
+);
         
 	wire [31:0] PC_IF_4;
 	wire [31:0] PC_mux;

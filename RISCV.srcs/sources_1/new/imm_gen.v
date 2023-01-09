@@ -1,8 +1,6 @@
-`timescale 1ns / 1ps
-
 module imm_gen(
-input [31:0] in,
-output reg [31:0] out
+    input [31:0] in,
+    output reg [31:0] out
 );
 
     reg [6:0] opcode;
