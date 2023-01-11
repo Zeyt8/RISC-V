@@ -71,7 +71,7 @@ module RISC_V(
 
     wire [31:0] DATA_Memory_WB;
     wire [31:0] ALU_OUT_WB;
-    MEM_WB memWbReg(DATA_MEMORY_MEM, ALU_OUT_MEM, rd_out, 1'b1, clk, reset, DATA_Memory_WB, ALU_OUT_WB, rd_out);
+    MEM_WB memWbReg(DATA_MEMORY_MEM, ALU_OUT_MEM, rd_out, 1'b1, clk, reset, DATA_Memory_WB, ALU_OUT_WB, RD_WB);
 
     WB wbModule(ALU_OUT_WB, DATA_Memory_WB, MemtoReg, ALU_DATA_WB);
 
