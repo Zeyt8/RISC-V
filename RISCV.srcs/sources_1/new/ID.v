@@ -27,5 +27,6 @@ module ID(
     control_path Control_Path(OPCODE_ID, Branch_ID, MemRead_ID, MemtoReg_ID, ALUop_ID, MemWrite_ID, ALUSrc_ID, RegWrite_ID);
     registers Register(clk, RegWrite_WB, RS1_ID, RS2_ID, RD_WB, ALU_DATA_WB, REG_DATA1_ID, REG_DATA2_ID);
     imm_gen Imm_Gen(INSTRUCTION_ID, IMM_ID);
+    mux2_1 Mux({ALUSrc_ID,MemtoReg_ID,RegWrite_ID,MemRead_ID,MemWrite_ID,Branch_ID,ALUop_ID}, 0, pipeline_stall, {ALUSrc_ID,MemtoReg_ID,RegWrite_ID,MemRead_ID,MemWrite_ID,Branch_ID,ALUop_ID});
 
 endmodule

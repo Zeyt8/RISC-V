@@ -1,7 +1,7 @@
 module EX_MEM(
     input [31:0] pc_in,
     input [2:0] func3_in,
-    input [31:0] zero_in,
+    input zero_in,
     input [31:0] ALU_in,
     input [31:0] reg2_data_in,
     input [4:0] rd_in,

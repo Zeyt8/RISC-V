@@ -36,6 +36,6 @@ module EX(
     ALU alu(ALU_Control, ALU_Source1, ALU_Source2, ZERO_EX, ALU_out_EX);
     ALUcontrol ALUInput(ALUop_EX, FUNCT3_EX, FUNCT7_EX, ALU_Control);
     
-    forwarding ForwardingUnit(RS1_EX, RS2_EX, MemRead_EX, MemWrite_EX, RegWrite_EX, MemToReg_EX, forwardA, forwardB);
+    forwarding ForwardingUnit(RS1_EX, RS2_EX, RD_EX, RD_EX, MemWrite_EX, RegWrite_EX, forwardA, forwardB);
 
 endmodule
