@@ -8,12 +8,12 @@ module EX_MEM(
     input write,
     input clk,
     input res,
-    output [31:0] pc_out,
-    output [2:0] func3_out,
-    output [31:0] zero_out,
-    output [31:0] alu_out,
-    output [31:0] reg2_data_out,
-    output [4:0] rd_out
+    output reg [31:0] pc_out,
+    output reg [2:0] func3_out,
+    output reg [31:0] zero_out,
+    output reg [31:0] alu_out,
+    output reg [31:0] reg2_data_out,
+    output reg [4:0] rd_out
 );
 
     always @(posedge clk) begin

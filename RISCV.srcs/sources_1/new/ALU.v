@@ -36,10 +36,8 @@ module ALU(
             4'b0111: //bltu, bgeu
                 out = (ina < inb);
         endcase
-        if (out == 0)
-            zero = 1;
-        else
-            zero = 0;
     end
+    
+    assign zero = (out == 1);
     
 endmodule
