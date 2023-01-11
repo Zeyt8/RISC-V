@@ -45,11 +45,11 @@ module RISC_V(
     // output
     wire [2:0] FUNC3_EX;
     wire [6:0] FUNC7_EX;
-    wire [31:0] ALU_A_out, ALU_B_out;
+    wire [31:0] REG_DATA1_EX, REG_DATA2_EX;
     wire [4:0] RS1_out, RS2_out, RD_EX;
     wire [31:0] IMM_out;
     ID_EX idExReg(PC_ID, FUNC3_ID, FUNC7_ID, REG_DATA1_ID, REG_DATA2_ID, RS1_ID, RS2_ID, RD_ID, 1'b1, clk, reset, IMM_ID,
-                  PC_EX, FUNC3_EX, FUNC7_EX, REG_DATA1_ID, ALU_A_out, ALU_B_out, RS1_out, RS2_out, RD_EX, IMM_out);
+                  PC_EX, FUNC3_EX, FUNC7_EX, REG_DATA1_EX, REG_DATA2_EX, RS1_out, RS2_out, RD_EX, IMM_out);
 
     // input
     wire [31:0] ALU_OUT_MEM;
@@ -57,7 +57,7 @@ module RISC_V(
     wire [31:0] PC_BRANCH_EX;
     wire [31:0] REG_DATA2_EX_FINAL;
     wire [4:0] rd_out;
-    EX exModule(IMM_out, ALU_A_out, ALU_B_out, PC_EX, FUNC3_EX, FUNC7_EX, rd_out, RS1_out, RS2_out,
+    EX exModule(IMM_out, REG_DATA1_EX, REG_DATA2_EX, PC_EX, FUNC3_EX, FUNC7_EX, rd_out, RS1_out, RS2_out,
                 RegWrite, MemToReg, MemRead, MemWrite, ALUop, ALUSrc, Branch, forwardA, forwardB, ALU_DATA_WB, ALU_OUT_MEM,
                 ZERO_EX, ALU_OUT_EX, PC_BRANCH_EX, REG_DATA2_EX_FINAL);
     
