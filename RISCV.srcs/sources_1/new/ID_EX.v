@@ -8,12 +8,12 @@ module ID_EX(
     input clk,
     input res,
     input [31:0] IMM_in,
-    output PC_out,
-    output [2:0] func3_out,
-    output [6:0] func7_out,
-    output [31:0] ALU_A_out, ALU_B_out,
-    output [4:0] RS1_out, RS2_out, RD_out,
-    output [31:0] IMM_out
+    output reg PC_out,
+    output reg [2:0] func3_out,
+    output reg [6:0] func7_out,
+    output reg [31:0] ALU_A_out, ALU_B_out,
+    output reg [4:0] RS1_out, RS2_out, RD_out,
+    output reg [31:0] IMM_out
 );
 
     always @(posedge clk) begin

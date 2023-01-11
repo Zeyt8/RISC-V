@@ -7,9 +7,9 @@ module MEM_WB(
     input write,
     input clk,
     input res,
-    output [31:0] data_out,
-    output [31:0] alu_out,
-    output [4:0] rd_out
+    output reg [31:0] data_out,
+    output reg [31:0] alu_out,
+    output reg [4:0] rd_out
 );
 
     always @(posedge clk) begin

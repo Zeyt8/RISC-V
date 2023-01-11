@@ -1,40 +1,30 @@
 ///////////////////////////////////////TESTBENCH//////////////////////////////////////////////////////////////////
 module RISC_V_TB;
-  reg clk,reset;
-  reg IF_ID_write;
-  reg PCSrc,PC_write;
-  reg [31:0] PC_Branch;
-  reg RegWrite_WB; 
-  reg [31:0] ALU_DATA_WB;
-  reg [4:0] RD_WB;
-  wire [31:0] PC_ID;
-  wire [31:0] INSTRUCTION_ID;
-  wire [31:0] IMM_ID;
-  wire [31:0] REG_DATA1_ID,REG_DATA2_ID;
-  wire RegWrite_ID,MemtoReg_ID,MemRead_ID,MemWrite_ID;
-  wire [1:0] ALUop_ID;
-  wire ALUSrc_ID;
-  wire Branch_ID;
+    reg clk, reset;
+    
+    wire [31:0] PC_EX;
+    wire [31:0] ALU_OUT_EX;
+    wire [31:0] PC_MEM;
+    wire PCSrc;
+    wire [31:0] DATA_MEMORY_MEM;
+    wire [31:0] ALU_DATA_WB;
+    wire [1:0] forwardA, forwardB;
+    wire pipeline_stall;
   
   RISC_V procesor(clk,reset,
-         IF_ID_write,
-         PCSrc,PC_write,
-         PC_Branch,
-         RegWrite_WB, 
+         PC_EX,
+         ALU_OUT_EX,
+         PC_MEM,
+         PCSrc,
+         DATA_MEMORY_MEM,
          ALU_DATA_WB,
-         RD_WB,
-         PC_ID,
-         INSTRUCTION_ID,
-         IMM_ID,
-         REG_DATA1_ID,REG_DATA2_ID,
-         RegWrite_ID,MemtoReg_ID,MemRead_ID,MemWrite_ID,
-         ALUop_ID,
-         ALUSrc_ID,
-         Branch_ID);    
+         forwardA,
+         forwardB,
+         pipeline_stall);    
          
   always #5 clk=~clk;
   
-  initial begin
+  /*initial begin
     #0 clk=1'b0;
        reset=1'b1;
        
@@ -130,5 +120,5 @@ module RISC_V_TB;
             #5
             in = 'h4090e63;
         end
-    end
+    end*/
 endmodule
