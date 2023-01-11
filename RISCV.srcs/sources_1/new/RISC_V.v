@@ -17,6 +17,8 @@ module RISC_V(
     wire Branch, ALUSrc;
     wire [1:0] ALUop; // ALU src and op
 
+    // input
+    wire PC_Write;
     // output
     wire [31:0] PC_IF, INSTRUCTION_IF;
     IF ifModule(clk, reset, PCSrc, PC_Write, PC_MEM, PC_IF, INSTRUCTION_IF);
@@ -39,8 +41,7 @@ module RISC_V(
                 FUNC3_ID, FUNC7_ID, OPCODE_ID, RD_ID, RS1_ID, RS2_ID);
 
     // hazard detection unit
-    wire PCWrite;
-    hazard_detection Hazard(RD_ID, RS1_ID, RS2_ID, MemRead, PCWrite, IF_ID_WRITE, pipeline_stall);
+    hazard_detection Hazard(RD_ID, RS1_ID, RS2_ID, MemRead, PC_Write, IF_ID_WRITE, pipeline_stall);
 
     // output
     wire [2:0] FUNC3_EX;
