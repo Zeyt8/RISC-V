@@ -48,11 +48,10 @@ module RISC_V(
     wire [31:0] ALU_A_out, ALU_B_out;
     wire [4:0] RS1_out, RS2_out, RD_EX;
     wire [31:0] IMM_out;
-    ID_EX idExReg(PC_ID, FUNC3_ID, FUNC7_ID, REG_DATA1_ID, REG_DATA2_ID, RS1_ID, RS2_ID, RD_ID, 1b'1, clk, reset, IMM_ID,
+    ID_EX idExReg(PC_ID, FUNC3_ID, FUNC7_ID, REG_DATA1_ID, REG_DATA2_ID, RS1_ID, RS2_ID, RD_ID, 1'b1, clk, reset, IMM_ID,
                   PC_EX, FUNC3_EX, FUNC7_EX, REG_DATA1_ID, ALU_A_out, ALU_B_out, RS1_out, RS2_out, RD_EX, IMM_out);
 
     // input
-    wire [4:0] RD_WB, RD_MEM;
     wire [31:0] ALU_OUT_MEM;
     wire ZERO_EX;
     wire [31:0] PC_BRANCH_EX;
@@ -65,14 +64,14 @@ module RISC_V(
     wire [2:0] FUNC3_MEM;
     wire zero_out;
     wire [31:0] REG_DATA2_MEM;
-    EX_MEM exMemReg(PC_BRANCH_EX, FUNC3_EX, ZERO_EX, ALU_OUT_EX, REG_DATA2_EX_FINAL, RD_EX, 1b'1, clk, reset,
+    EX_MEM exMemReg(PC_BRANCH_EX, FUNC3_EX, ZERO_EX, ALU_OUT_EX, REG_DATA2_EX_FINAL, RD_EX, 1'b1, clk, reset,
                     PC_MEM, FUNC3_MEM, zero_out, ALU_OUT_MEM, REG_DATA2_MEM, rd_out);
 
     MEM memModule(clk, FUNC3_MEM, zero_out, ALU_OUT_MEM, REG_DATA2_MEM, Branch, MemRead, MemWrite, DATA_MEMORY_MEM, PCSrc);
 
     wire [31:0] DATA_Memory_WB;
     wire [31:0] ALU_OUT_WB;
-    MEM_WB memWbReg(DATA_MEMORY_MEM, ALU_OUT_MEM, rd_out, 1b'1, clk, reset, DATA_Memory_WB, ALU_OUT_WB, rd_out);
+    MEM_WB memWbReg(DATA_MEMORY_MEM, ALU_OUT_MEM, rd_out, 1'b1, clk, reset, DATA_Memory_WB, ALU_OUT_WB, rd_out);
 
     WB wbModule(ALU_OUT_WB, DATA_Memory_WB, MemtoReg, ALU_DATA_WB);
 

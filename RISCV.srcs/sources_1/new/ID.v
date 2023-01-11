@@ -10,12 +10,12 @@ module ID(
     output [1:0] ALUop_ID,
     output ALUSrc_ID,
     output Branch_ID,
-    output [2:0] FUNCT3_ID;
-    output [6:0] FUNCT7_ID;
-    output [6:0] OPCODE_ID;
-    output [4:0] RD_ID; 
-    output [4:0] RS1_ID;
-    output [4:0] RS2_ID;
+    output [2:0] FUNCT3_ID,
+    output [6:0] FUNCT7_ID,
+    output [6:0] OPCODE_ID,
+    output [4:0] RD_ID,
+    output [4:0] RS1_ID,
+    output [4:0] RS2_ID
 );
     assign FUNCT3_ID = INSTRUCTION_ID[14:12];
     assign FUNCT7_ID = INSTRUCTION_ID[31:25];
