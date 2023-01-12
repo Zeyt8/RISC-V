@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module forwarding(
     input [4:0] rs1,
     input [4:0] rs2,

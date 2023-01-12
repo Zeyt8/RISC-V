@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module IF_ID(
     input clk, write, res,
     input [31:0] pc_in, instruction_in,

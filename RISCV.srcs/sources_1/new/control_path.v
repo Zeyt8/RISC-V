@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module control_path(opcode,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite);
   
   input [6:0] opcode;

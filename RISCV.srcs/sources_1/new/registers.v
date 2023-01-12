@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module registers(
     input clk, reg_write,
     input [4:0] read_reg1, read_reg2, write_reg,

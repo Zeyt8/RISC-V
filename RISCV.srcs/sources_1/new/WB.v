@@ -1,7 +1,10 @@
+`timescale 1ns/1ps
+
 module WB(
     input [31:0] ALU_OUT_WB,
     input [31:0] DATA_Memory_WB,
-    input MemtoReg_WB,
+    input MemtoReg_WB, RegWrite_WB,
+    input [4:0] RD_WB,
     output [31:0] ALU_DATA_WB
 );
 

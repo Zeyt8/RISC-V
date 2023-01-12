@@ -1,6 +1,8 @@
+`timescale 1ns/1ps
+
 module mux3_1(
     input [31:0] ina, inb, inc,
-    input sel,
+    input [1:0] sel,
     output [31:0] out
 );
 

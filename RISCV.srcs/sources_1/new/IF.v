@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module IF(
 	input clk, reset,
 	input PCSrc, PC_write,

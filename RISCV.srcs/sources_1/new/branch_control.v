@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module branch_control(input ZERO, ALU_OUT, BRANCH,
                       input [2:0] FUNCT3,
                       output PCSrc);

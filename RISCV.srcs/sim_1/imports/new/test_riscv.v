@@ -27,8 +27,6 @@ module RISC_V_TB;
     #0 clk=1'b0;
        reset=1'b1;
        
-               
-       
     #10 reset=1'b0;
     #200 $finish;
   end

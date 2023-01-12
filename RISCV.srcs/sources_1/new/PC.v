@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module PC(
 	input clk, res, write,
 	input [31:0] in,

@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module hazard_detection(
     input [4:0] rd,
     input [4:0] rs1,
@@ -12,12 +14,12 @@ module hazard_detection(
         if (MemRead && (rd == rs1 || rd == rs2)) begin
             PCwrite = 1'b0;
             IF_IDwrite = 1'b0;
-            control_sel = 1'b0;
+            control_sel = 1'b1;
         end
         else begin
             PCwrite = 1'b1;
             IF_IDwrite = 1'b1;
-            control_sel = 1'b1;
+            control_sel = 1'b0;
         end
     end
     
