@@ -9,27 +9,25 @@ module ALU(
     
     always @(*) begin
         case (ALUop)
-            4'b0000: //nop
-                out = 0;
-            4'b0010: //add(i)
+            4'b0010: //addi
                 out = ina + inb;
             4'b0100: //sll
                 out = ina << inb;
             4'b0110: //sub
                 out = ina - inb;
-            4'b1000: //slt(i)
+            4'b1000: //slti
                 out = ($signed(ina) < $signed(inb));
-            4'b0111: //slt(i)u
+            4'b0111: //sltiu
                 out = (ina < inb);
-            4'b0011: //xor(i)
+            4'b0011: //xori
                 out = ina ^ inb;
-            4'b0101: //srl(i)
+            4'b0101: //srli
                 out = ina >> inb;
-            4'b1001: //sra(i)
+            4'b1001: //srai
                 out = ina >>> inb;
-            4'b0001: //or(i)
+            4'b0001: //ori
                 out = ina | inb;
-            4'b0000: //and(i)
+            4'b0000: //andi
                 out = ina & inb;
             4'b0110: //beq, bne
                 out = (ina != inb);
@@ -40,6 +38,6 @@ module ALU(
         endcase
     end
     
-    assign zero = (out == 1);
+    assign zero = (out == 0);
     
 endmodule

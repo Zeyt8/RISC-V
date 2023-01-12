@@ -11,12 +11,21 @@ module data_memory(
     
     reg [31:0] memory [0:1023];
 
+    integer i;
+    initial begin
+        for (i = 0; i < 1024; i = i + 1)
+            memory[i] = 32'b0;
+    end
+
     always @(posedge clk) begin
-        if (mem_read) begin
-            read_data <= memory[address];
+        if (mem_write) begin
+            memory[address[11:2]] <= write_data;
         end
-        else if (mem_write) begin
-            memory[address] <= write_data;
+    end
+
+    always @(mem_read) begin
+        if (mem_read) begin
+            read_data <= memory[address[11:2]];
         end
     end
     

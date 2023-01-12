@@ -6,5 +6,5 @@ module mux3_1(
     output [31:0] out
 );
 
-	assign out = (sel == 0 ? ina : (sel == 1 ? inb : inc));
+	assign out = (sel == 2'b00 ? ina : (sel == 2'b01 ? inb : (sel == 2'b10 ? inc : 0)));
 endmodule
