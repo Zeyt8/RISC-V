@@ -27,9 +27,11 @@ module ID(
     assign RS2_ID = INSTRUCTION_ID[24:20];
     wire [31:0] Mux_OUT;
 
-    control_path Control_Path(OPCODE_ID, Branch_ID, MemRead_ID, MemtoReg_ID, ALUop_ID, MemWrite_ID, ALUSrc_ID, RegWrite_ID);
+    control_path Control_Path(pipeline_stall, OPCODE_ID, Branch_ID, MemRead_ID, MemtoReg_ID, ALUop_ID, MemWrite_ID, ALUSrc_ID, RegWrite_ID);
     registers Register(clk, RegWrite_WB, RS1_ID, RS2_ID, RD_WB, ALU_DATA_WB, REG_DATA1_ID, REG_DATA2_ID);
     imm_gen Imm_Gen(INSTRUCTION_ID, IMM_ID);
-    mux2_1 Mux(0, {ALUSrc_ID,MemtoReg_ID,RegWrite_ID,MemRead_ID,MemWrite_ID,Branch_ID,ALUop_ID, 24'b0}, pipeline_stall, Mux_OUT);
+    //mux2_1 Mux({ALUSrc_ID,MemtoReg_ID,RegWrite_ID,MemRead_ID,MemWrite_ID,Branch_ID,ALUop_ID[1:0], 24'b0}, 0, pipeline_stall, Mux_OUT);
+    
+    //assign {ALUSrc_ID,MemtoReg_ID,RegWrite_ID,MemRead_ID,MemWrite_ID,Branch_ID,ALUop_ID} = Mux_OUT[31:24];
 
 endmodule

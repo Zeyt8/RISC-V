@@ -1,12 +1,16 @@
 `timescale 1ns/1ps
 
-module control_path(opcode,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite);
+module control_path(pipeline_stall, opcode,Branch,MemRead,MemtoReg,ALUop,MemWrite,ALUSrc,RegWrite);
   
+  input pipeline_stall;
   input [6:0] opcode;
   output reg MemRead,MemtoReg,MemWrite,RegWrite,Branch,ALUSrc;
   output reg [1:0] ALUop;
   
   always@(opcode) begin
+    if (pipeline_stall)
+      {ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUop} <= 8'b00000000;
+    else  
     casex(opcode)
       7'b0000000: {ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUop} <= 8'b00000000; //nop from ISA
       7'b0000011: {ALUSrc,MemtoReg,RegWrite,MemRead,MemWrite,Branch,ALUop} <= 8'b11110000; //lw

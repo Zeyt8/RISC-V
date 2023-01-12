@@ -6,5 +6,5 @@ module mux2_1(
     output [31:0] out
 );
 
-	assign out = (sel == 0 ? ina : inb);
+	assign out = (sel == 1'b0 ? ina : inb);
 endmodule

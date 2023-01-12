@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="210.000 ns"></ZoomEndTime>
+      <ZoomEndTime time="210.001 ns"></ZoomEndTime>
       <Cursor1Time time="210.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="189"></NameColumnWidth>
-      <ValueColumnWidth column_width="91"></ValueColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="13" />
    <wvobject fp_name="/RISC_V_TB/clk" type="logic">
@@ -67,11 +67,9 @@
    <wvobject fp_name="/RISC_V_TB/procesor/idModule/Register/registers" type="array">
       <obj_property name="ElementShortName">registers[0:31][31:0]</obj_property>
       <obj_property name="ObjectShortName">registers[0:31][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/RISC_V_TB/procesor/memModule/Data_Mem/memory" type="array">
       <obj_property name="ElementShortName">memory[0:1023][31:0]</obj_property>
       <obj_property name="ObjectShortName">memory[0:1023][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
